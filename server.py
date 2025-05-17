@@ -1,5 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware
 from datetime import datetime
 import os
 import subprocess
@@ -8,6 +9,13 @@ import time
 
 app = FastAPI()
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["https://preview--research-rebel-bot.lovable.app/"],  # Or ["*"] for all origins (not safe in prod)
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 class IdeaInput(BaseModel):
     Title: str
     Keyword: str
