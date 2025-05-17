@@ -53,6 +53,9 @@ AVAILABLE_LLMS = [
     "gemini-2.5-pro-preview-03-25",
 ]
 
+AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+AWS_DEFAULT_REGION = os.getenv('AWS_DEFAULT_REGION')
 
 # Get N responses from a single message, used for ensembling.
 @backoff.on_exception(
@@ -421,7 +424,10 @@ def create_client(model) -> tuple[Any, str]:
     elif model.startswith("bedrock") and "claude" in model:
         client_model = model.split("/")[-1]
         print(f"Using Amazon Bedrock with model {client_model}.")
-        return anthropic.AnthropicBedrock(), client_model
+        return anthropic.AnthropicBedrock(
+            aws_access_key=AWS_ACCESS_KEY_ID,
+            aws_secret_key=AWS_SECRET_ACCESS_KEY,
+            aws_region=AWS_DEFAULT_REGION), client_model
     elif model.startswith("vertex_ai") and "claude" in model:
         client_model = model.split("/")[-1]
         print(f"Using Vertex AI with model {client_model}.")

@@ -27,3 +27,7 @@ jsonschema
 omegaconf
 botocore
 boto3
+# api
+fastapi
+pydantic
+uvicorn[standard]
