@@ -28,7 +28,7 @@ RUN apt-get update && apt-get install -y openssl && \
     -out cert.pem
 
 # Expose FastAPI port
-EXPOSE 443
+EXPOSE 8000
 
 # Command to run app on container start
-CMD ["/bin/bash", "-c", "source ~/.bashrc && conda activate ai_scientist && python -m uvicorn server:app --host 0.0.0.0 --port 443", "--ssl-keyfile=key.pem", "--ssl-certfile=cert.pem"]
+CMD ["/bin/bash", "-c", "source ~/.bashrc && conda activate ai_scientist && python -m uvicorn server:app --host 0.0.0.0 --port 8000"]
