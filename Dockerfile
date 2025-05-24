@@ -31,4 +31,4 @@ RUN apt-get update && apt-get install -y openssl && \
 EXPOSE 8000
 
 # Command to run app on container start
-CMD ["/bin/bash", "-c", "source ~/.bashrc && conda activate ai_scientist && python -m uvicorn server:app --host 0.0.0.0 --port 8000"]
+CMD ["/bin/bash", "-c", "source ~/.bashrc && conda activate ai_scientist && python -m uvicorn server:app --host 0.0.0.0 --port 80"]
