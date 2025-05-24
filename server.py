@@ -11,7 +11,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://preview--research-rebel-bot.lovable.app/"],  # Or ["*"] for all origins (not safe in prod)
+    allow_origins=["*"],  # Or ["*"] for all origins (not safe in prod)
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
