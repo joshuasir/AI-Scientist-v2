@@ -47,7 +47,7 @@ async def submit_idea(idea: IdeaInput):
             "ai_scientist/perform_ideation_temp_free.py",
             "--workshop-file", md_path,
             "--model", "bedrock/anthropic.claude-3-5-sonnet-20240620-v1:0",
-            "--max-num-generations", "1",
+            "--max-num-generations", "5",
             "--num-reflections", "5"
         ], check=True)
     except subprocess.CalledProcessError as e:
